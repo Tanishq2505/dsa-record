@@ -12,3 +12,27 @@ class Solution:
                 maxP = max(maxP,prices[r]-prices[l])
                 r+=1
         return maxP
+
+# Contains duplicate
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        n = set(nums)
+        return True if len(n)!=len(nums) else False
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        dictN = {}
+        for i in nums:
+            if i in dictN:
+                return True
+            dictN[i] = 1
+        return False
+
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        nums.sort()
+        for i in range(len(nums)-1):
+            if nums[i]==nums[i+1]:
+                return True
+        return False
+
