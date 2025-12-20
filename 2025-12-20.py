@@ -1,6 +1,6 @@
 # Chocolate Distribution
 class Solution:
-
+# Array slicing is O(n)
     def findMinDiff(self, arr,m):
 
         # code here
@@ -10,6 +10,7 @@ class Solution:
         arr.sort()
         minDiff = 1000000000
         for i in range(len(arr)-m+1):
-            subArray = arr[i:i+m]
-            minDiff = min(minDiff, max(subArray)-min(subArray))
-        return minDiff            
+            diff = arr[i+m-1] - arr[i]
+            if(diff<minDiff):
+                minDiff=diff
+        return minDiff                     
