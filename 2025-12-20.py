@@ -59,3 +59,24 @@ class Solution:
         mis = rep - sDiff
         
         return rep, mis
+
+
+# kth largest - quickselect
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+
+        if not nums: return
+        pivot = random.choice(nums)
+
+        less = [x for x in nums if x>pivot]
+        equal = [x for x in nums if x==pivot]
+        more = [x for x in nums if x<pivot]
+
+        L,M = len(less), len(equal)
+
+        if k<=L:
+            return self.findKthLargest(less,k)
+        elif k>L+M:
+            return self.findKthLargest(more,k-L-M)
+        else:
+            return equal[0]
