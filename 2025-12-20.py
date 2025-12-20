@@ -35,3 +35,27 @@ class Solution:
                 else:
                     left = mid+1
         return -1
+
+# Missing and repeated in 1...n
+class Solution:
+    # @param A : tuple of integers
+    # @return a list of integers
+    def repeatedNumber(self, a):
+        n = len(a)
+        eSum = (n*(n+1))//2
+        eSsum = n * (n + 1) * (2*n + 1) // 6
+        
+        aSum = 0
+        aSsum = 0
+        for i in a:
+            aSum+=i
+            aSsum += (i*i)
+        sDiff = aSum-eSum
+        sSdiff = aSsum - eSsum
+        
+        sRm = sSdiff//sDiff
+        
+        rep = (sDiff+sRm) // 2
+        mis = rep - sDiff
+        
+        return rep, mis
